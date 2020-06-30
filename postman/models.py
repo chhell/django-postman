@@ -14,8 +14,9 @@ from django.db import models
 from django.db.models import IntegerField, Value
 from django.db.models.expressions import RawSQL
 from django.db.models.query import QuerySet
-from django.utils import six
-from django.utils.encoding import force_text, python_2_unicode_compatible
+import six
+from django.utils.encoding import force_text
+from six import python_2_unicode_compatible
 from django.utils.text import Truncator
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _

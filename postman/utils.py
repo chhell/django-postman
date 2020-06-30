@@ -8,7 +8,7 @@ from django import VERSION
 from django.conf import settings
 from django.template import TemplateDoesNotExist
 from django.template.loader import render_to_string
-from django.utils import six
+import six
 from django.utils.encoding import force_text
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext, ugettext_lazy as _

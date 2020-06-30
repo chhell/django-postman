@@ -5,7 +5,7 @@ from django import VERSION
 from django.db.models.sql.compiler import SQLCompiler
 from django.db.models.sql.constants import INNER
 from django.db.models.sql.query import Query
-from django.utils import six
+import six
 
 
 class Proxy(object):

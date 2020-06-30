@@ -57,7 +57,7 @@ if VERSION >= (1, 10):
     from django.test import override_settings
 from django.utils.encoding import force_text
 from django.utils.formats import localize
-from django.utils import six
+import six
 from django.utils.six import StringIO
 from django.utils.six.moves import reload_module
 from django.utils.timezone import localtime, now
@@ -2207,7 +2207,7 @@ class CommandTest(BaseTest):
         c3_m1 = self.c12(sender_deleted_at=good_date, recipient_deleted_at=good_date)
         c3_m1.thread = c3_m1; c3_m1.save()
         c3_m2 = self.c21(parent=c3_m1, thread=c3_m1.thread, sender_deleted_at=good_date)  # missing recipient_deleted_at
-        
+
         out = StringIO()
         call_command('postman_cleanup', verbosity=0, stdout=out)
         self.assertEqual(out.getvalue(), '')
