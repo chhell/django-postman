@@ -10,7 +10,7 @@ from django.template import Library
 from django.template.defaultfilters import date
 import six
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from postman.models import ORDER_BY_KEY, ORDER_BY_MAPPER, Message,\
     get_user_representation

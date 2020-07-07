@@ -19,7 +19,7 @@ from django.utils.encoding import force_text
 from six import python_2_unicode_compatible
 from django.utils.text import Truncator
 from django.utils.timezone import now
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 if getattr(settings, 'POSTMAN_I18N_URLS', False):
     from django.utils.translation import pgettext_lazy
 else:
@@ -411,7 +411,7 @@ class Message(models.Model):
     def clean(self):
         """Check some validity constraints."""
         if not (self.sender_id is not None or self.email):
-            raise ValidationError(ugettext("Undefined sender."))
+            raise ValidationError(gettext("Undefined sender."))
 
     def clean_moderation(self, initial_status, user=None):
         """Adjust automatically some fields, according to status workflow."""

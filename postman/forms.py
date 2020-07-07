@@ -18,7 +18,7 @@ from django import forms, VERSION
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import transaction
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 
 from .fields import CommaSeparatedUserField
 from .models import Message, get_user_name
@@ -181,7 +181,7 @@ class BaseReplyForm(BaseWriteForm):
     def clean(self):
         """Check that the recipient is correctly initialized and no filter prohibits the exchange."""
         if not self.recipient:
-            raise forms.ValidationError(ugettext("Undefined recipient."))
+            raise forms.ValidationError(gettext("Undefined recipient."))
 
         exchange_filter = getattr(self, 'exchange_filter', None)
         if exchange_filter and isinstance(self.recipient, get_user_model()):

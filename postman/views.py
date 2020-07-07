@@ -17,7 +17,7 @@ from django.utils.decorators import method_decorator
 from django.utils.encoding import force_text
 from django.utils.six.moves.urllib.parse import urlsplit, urlunsplit  # Django 1.4.11, 1.5.5
 from django.utils.timezone import now
-from django.utils.translation import ugettext as _, ugettext_lazy
+from django.utils.translation import gettext as _, gettext_lazy
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
@@ -459,21 +459,21 @@ class UpdateDualMixin(UpdateMessageMixin):
 class ArchiveView(UpdateDualMixin, View):
     """Mark messages/conversations as archived."""
     field_bit = 'archived'
-    success_msg = ugettext_lazy("Messages or conversations successfully archived.")
+    success_msg = gettext_lazy("Messages or conversations successfully archived.")
     field_value = True
 
 
 class DeleteView(UpdateDualMixin, View):
     """Mark messages/conversations as deleted."""
     field_bit = 'deleted_at'
-    success_msg = ugettext_lazy("Messages or conversations successfully deleted.")
+    success_msg = gettext_lazy("Messages or conversations successfully deleted.")
     field_value = now()
 
 
 class UndeleteView(UpdateDualMixin, View):
     """Revert messages/conversations from marked as deleted."""
     field_bit = 'deleted_at'
-    success_msg = ugettext_lazy("Messages or conversations successfully recovered.")
+    success_msg = gettext_lazy("Messages or conversations successfully recovered.")
 
 
 class UpdateRecipientMixin(UpdateMessageMixin):
@@ -487,11 +487,11 @@ class UpdateRecipientMixin(UpdateMessageMixin):
 class MarkReadView(UpdateRecipientMixin, View):
     """Mark messages/conversations as read."""
     field_bit = 'read_at'
-    success_msg = ugettext_lazy("Messages or conversations successfully marked as read.")
+    success_msg = gettext_lazy("Messages or conversations successfully marked as read.")
     field_value = now()
 
 
 class MarkUnreadView(UpdateRecipientMixin, View):
     """Revert messages/conversations from marked as read."""
     field_bit = 'read_at'
-    success_msg = ugettext_lazy("Messages or conversations successfully marked as unread.")
+    success_msg = gettext_lazy("Messages or conversations successfully marked as unread.")

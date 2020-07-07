@@ -11,7 +11,7 @@ from django.template.loader import render_to_string
 import six
 from django.utils.encoding import force_text
 from django.utils.html import strip_tags
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 from django.views.decorators.debug import sensitive_variables
 
 # make use of a favourite notifier app such as django-notification
@@ -89,7 +89,7 @@ def format_body(sender, body, indent=_("> "), width=WRAP_WIDTH):
     wrapper = TextWrapper(width=width, initial_indent=indent, subsequent_indent=indent)
     # rem: TextWrapper doesn't add the indent on an empty text
     quote = '\n'.join([line.startswith(indent) and indent+line or wrapper.fill(line) or indent for line in body.splitlines()])
-    return ugettext("\n\n{sender} wrote:\n{body}\n").format(sender=sender, body=quote)
+    return gettext("\n\n{sender} wrote:\n{body}\n").format(sender=sender, body=quote)
 
 
 @sensitive_variables('subject')
@@ -100,7 +100,7 @@ def format_subject(subject):
     Matching is case-insensitive.
 
     """
-    str = ugettext("Re: {subject}")
+    str = gettext("Re: {subject}")
     pattern = '^' + str.replace('{subject}', '.*') + '$'
     return subject if re.match(pattern, subject, re.IGNORECASE) else str.format(subject=subject)
 
